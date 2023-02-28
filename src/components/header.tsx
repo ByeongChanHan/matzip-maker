@@ -1,11 +1,19 @@
 import styles from "../styles/header.module.scss";
 import Link from "next/link";
-export default function header() {
+
+export default function Header() {
+  const moveHome = () => {
+    window.location.href = "/";
+  };
+
   return (
     <header>
       <nav className={styles.navigation}>
         <b onClick={moveHome}>Matzip Maker</b>
         <ul>
+          <li>
+            <Link href="/login">로그인</Link>
+          </li>
           <li>
             <Link href="/mapseeker">지도</Link>
           </li>
@@ -17,6 +25,3 @@ export default function header() {
     </header>
   );
 }
-const moveHome = () => {
-  window.location.href = "/";
-};

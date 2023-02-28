@@ -1,9 +1,9 @@
 import Header from "../components/Header";
-export default function list() {
+export default function login() {
   return (
     <div>
       <Header />
-      <p>list</p>
+      <p>login page</p>
     </div>
   );
 }
