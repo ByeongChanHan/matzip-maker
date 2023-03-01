@@ -1,4 +1,5 @@
 import styles from "../styles/section.module.scss";
+import Image from "next/image";
 
 const restaurants = [
   {
@@ -28,7 +29,7 @@ export default function Section() {
     <section className={styles.mainsection}>
       {restaurants.map((restaurant) => (
         <div key={restaurant.name} className={styles.card}>
-          <img src={restaurant.image} alt={restaurant.name} />
+          <Image src={restaurant.image} alt={restaurant.name} />
           <h3>{restaurant.name}</h3>
           <p>{restaurant.description}</p>
           <div className={styles.rating}>{restaurant.rating}</div>

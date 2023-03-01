@@ -1,7 +1,6 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 /*global kakao*/
 import { useEffect, useRef } from "react";
-import Header from "../components/Header";
 import styles from "../styles/mapseeker.module.scss";
 
 export default function mapseeker() {
@@ -26,7 +25,6 @@ export default function mapseeker() {
 
   return (
     <div>
-      <Header />
       <div className={styles.map} ref={mapRef}></div>
     </div>
   );
