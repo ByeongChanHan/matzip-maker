@@ -9,3 +9,15 @@
   width: 100vw;
   height: 80vh;
 }
+.reset {
+  font-size: 1.4rem;
+  position: absolute;
+  left: 50%;
+  bottom: 5%;
+  z-index: 2;
+  background-color: #0074d9;
+  color: white;
+  padding: 1%;
+  border-radius: 15px;
+  border: 0;
+}
