@@ -9,7 +9,7 @@ export default class MyDocument extends Document {
         <body>
           <script
             type="text/javascript"
-            src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ee155ce8e7a99e04e81c5e9d96eddba1"
+            src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ee155ce8e7a99e04e81c5e9d96eddba1&libraries=services"
           ></script>
           <Main />
           <NextScript />

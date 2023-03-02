@@ -29,7 +29,12 @@ export default function Section() {
     <section className={styles.mainsection}>
       {restaurants.map((restaurant) => (
         <div key={restaurant.name} className={styles.card}>
-          <Image src={restaurant.image} alt={restaurant.name} />
+          <Image
+            src={restaurant.image}
+            alt={restaurant.name}
+            width={500}
+            height={300}
+          />
           <h3>{restaurant.name}</h3>
           <p>{restaurant.description}</p>
           <div className={styles.rating}>{restaurant.rating}</div>
