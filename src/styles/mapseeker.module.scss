@@ -7,7 +7,7 @@
   left: 50%;
   bottom: 5%;
   z-index: 2;
-  background-color: #0074d9;
+  background-color: #cb9639;
   color: white;
   padding: 1% 2%;
   border-radius: 25px;
@@ -15,7 +15,9 @@
 }
 
 .section {
-  background-color: #f9f9f9;
+  font-family: $Header-font;
+  border-bottom: 1px solid #dbdbdb;
+  background-color: #f7f7f7;
   padding: 2rem 0;
 }
 
@@ -26,12 +28,12 @@
 }
 
 .heading {
-  font-size: 3rem;
+  font-size: 2.5rem;
   margin: 1.5rem 0;
 }
 
 .description {
-  font-size: 1.5rem;
-  color: #777;
+  font-size: 1.2rem;
+  color: #9b9b9b;
   margin-bottom: 0;
 }

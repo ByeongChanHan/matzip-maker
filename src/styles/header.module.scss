@@ -1,7 +1,7 @@
 @import "./variable.scss";
 
 .navigation {
-  background-color: #0074d9;
+  background-color: #cb9639;
   color: #fff;
   font-family: $Header-font;
   display: flex;
@@ -13,8 +13,8 @@
   }
 
   b {
-    font-size: 20px;
-    line-height: 40px;
+    font-size: 24px;
+    line-height: 45px;
     margin: 1rem;
     text-decoration: none;
     cursor: pointer;
@@ -42,7 +42,7 @@
 
   li a:hover {
     background-color: #fff;
-    color: #0074d9;
+    color: #cb9639;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   }

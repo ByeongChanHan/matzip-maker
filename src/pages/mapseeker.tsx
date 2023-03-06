@@ -183,7 +183,7 @@ export default function mapseeker() {
       <style jsx global>{`
         #map {
           width: 100vw;
-          height: 69vh;
+          height: 70vh;
         }
         .map_label {
           position: relative;
@@ -224,7 +224,9 @@ export default function mapseeker() {
           right: 50%;
         }
         .place_name {
-          font-weight: bold;
+          font-size: 17px;
+          color: #cb9639;
+          font-weight: bolder;
         }
         .category_name {
           margin-top: 5px;
