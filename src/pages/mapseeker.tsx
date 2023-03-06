@@ -34,7 +34,7 @@ export default function mapseeker() {
     const markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
 
     // 키워드 검색 완료 시 호출되는 콜백함수 입니다
-    function placesSearchCB(data: string | any[], status: any) {
+    function placesSearchCB(data: string | any[], status: string) {
       if (status === kakao.maps.services.Status.OK) {
         // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
         // LatLngBounds 객체에 좌표를 추가합니다
@@ -50,7 +50,7 @@ export default function mapseeker() {
       }
     }
     // 지도에 마커를 표시하는 함수입니다
-    function displayPlace(place: { y: any; x: any; place_name: string }) {
+    function displayPlace(place: { y: string; x: string; place_name: string }) {
       // 마커를 생성하고 지도에 표시합니다
       let marker = new kakao.maps.Marker({
         map: map,
@@ -80,7 +80,7 @@ export default function mapseeker() {
         geocoder.coord2Address(
           locPosition.getLng(),
           locPosition.getLat(),
-          (result: { address: any }[], status: any) => {
+          (result: { address: any }[], status: string) => {
             if (status === kakao.maps.services.Status.OK) {
               const searchKeyword =
                 result[0].address.region_1depth_name +
@@ -98,7 +98,7 @@ export default function mapseeker() {
     }
 
     // 지도에 마커와 인포윈도우를 표시하는 함수입니다
-    function displayMarker(locPosition: any) {
+    function displayMarker(locPosition: object) {
       // 마커를 생성합니다
       let marker = new kakao.maps.Marker({
         map: map,
@@ -127,8 +127,13 @@ export default function mapseeker() {
   };
   return (
     <div>
-      <section>
-        <h2 className={styles.h2}>내 주변 맛집</h2>
+      <section className={styles.section}>
+        <div className={styles.container}>
+          <h2 className={styles.heading}>내 주변 맛집</h2>
+          <p className={styles.description}>
+            지도를 이용하여 맛집을 찾아보세요!
+          </p>
+        </div>
       </section>
       <div id="map" ref={mapRef}></div>
       <button className={styles.reset} onClick={onHandleClick}>
@@ -137,7 +142,7 @@ export default function mapseeker() {
       <style jsx>{`
         #map {
           width: 100vw;
-          height: 80vh;
+          height: 69vh;
         }
       `}</style>
     </div>
