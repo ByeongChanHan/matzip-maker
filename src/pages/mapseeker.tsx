@@ -7,6 +7,7 @@ import styles from "../styles/mapseeker.module.scss";
 export default function mapseeker() {
   const mapRef = useRef(null);
   const markers: any[] = [];
+  let currentOverlay: any = null;
 
   useEffect(() => {
     if (!mapRef.current) return;
@@ -23,7 +24,6 @@ export default function mapseeker() {
     let geocoder = new kakao.maps.services.Geocoder();
     // 장소 검색 객체를 생성합니다
     let places = new kakao.maps.services.Places();
-    let infowindow = new kakao.maps.InfoWindow({ zIndex: 1 });
 
     const imageSrc =
       "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
@@ -50,20 +50,61 @@ export default function mapseeker() {
       }
     }
     // 지도에 마커를 표시하는 함수입니다
-    function displayPlace(place: { y: string; x: string; place_name: string }) {
+    function displayPlace(place: {
+      phone: string;
+      category_name: string;
+      address_name: string;
+      y: string;
+      x: string;
+      place_name: string;
+    }) {
       // 마커를 생성하고 지도에 표시합니다
       let marker = new kakao.maps.Marker({
         map: map,
         position: new kakao.maps.LatLng(place.y, place.x),
       });
+      let CustomOverlay = new kakao.maps.CustomOverlay({
+        map: map,
+        zIndex: 1,
+        position: new kakao.maps.LatLng(place.y, place.x),
+        yAnchor: 1.45,
+      });
       markers.push(marker);
       // 마커에 클릭이벤트를 등록합니다
       kakao.maps.event.addListener(marker, "click", function () {
+        if (currentOverlay) {
+          currentOverlay.setMap(null);
+        }
         // 마커를 클릭하면 장소명이 인포윈도우에 표출됩니다
-        infowindow.setContent(
-          '<div style="line-height : 30px;">' + place.place_name + "</div>"
+        CustomOverlay.setContent(
+          '<div class="map_label">' +
+            '<div class="place_name">' +
+            place.place_name +
+            "</div>" +
+            "<hr>" +
+            '<div class="category_name">' +
+            "카테고리 : " +
+            place.category_name +
+            "</div>" +
+            '<div class="address_name">' +
+            "주소 : " +
+            place.address_name +
+            "</div>" +
+            '<div class="phone">' +
+            "전화번호 : " +
+            place.phone +
+            "</div>" +
+            '<div class="map_label_arrow"></div>' +
+            "</div>"
         );
-        infowindow.open(map, marker);
+        CustomOverlay.setMap(map);
+        currentOverlay = CustomOverlay;
+      });
+      // 커스텀 오버레이 제거
+      kakao.maps.event.addListener(map, "click", function () {
+        if (currentOverlay) {
+          currentOverlay.setMap(null);
+        }
       });
     }
 
@@ -139,10 +180,54 @@ export default function mapseeker() {
       <button className={styles.reset} onClick={onHandleClick}>
         현 위치에서 찾기
       </button>
-      <style jsx>{`
+      <style jsx global>{`
         #map {
           width: 100vw;
           height: 69vh;
+        }
+        .map_label {
+          position: relative;
+          font-family: "Noto Sans KR", sans-serif;
+          font-weight: bolder;
+          text-align: center;
+          height: 110px;
+          position: relative;
+          font-size: 15px;
+          padding: 5px 20px;
+          box-sizing: border-box;
+          border-radius: 15px;
+          background: #fff;
+          border: 0;
+          box-shadow: 0px 0px 10px #000;
+        }
+        .map_label_arrow {
+          border: 0px solid transparent;
+          border-bottom: 6px solid rgba(0, 0, 0, 0);
+          top: 6px;
+          position: absolute;
+          right: 48%;
+        }
+        .map_label_arrow::before {
+          border: 6px solid transparent;
+          border-top: 0;
+          top: 105px;
+          content: "";
+          position: absolute;
+          right: 50%;
+        }
+        .map_label_arrow::after {
+          border: 6px solid transparent;
+          border-top: 8px solid #fff;
+          top: 104px;
+          content: "";
+          position: absolute;
+          right: 50%;
+        }
+        .place_name {
+          font-weight: bold;
+        }
+        .category_name {
+          margin-top: 5px;
         }
       `}</style>
     </div>
