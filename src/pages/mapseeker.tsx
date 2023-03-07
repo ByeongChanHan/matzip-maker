@@ -190,7 +190,7 @@ export default function mapseeker() {
           font-family: "Noto Sans KR", sans-serif;
           font-weight: bolder;
           text-align: center;
-          height: 110px;
+          height: 115px;
           position: relative;
           font-size: 15px;
           padding: 5px 20px;
@@ -202,27 +202,18 @@ export default function mapseeker() {
         }
         .map_label_arrow {
           border: 0px solid transparent;
-          border-bottom: 6px solid rgba(0, 0, 0, 0);
-          top: 6px;
-          position: absolute;
-          right: 48%;
+          border-bottom: 10px solid rgba(0, 0, 0, 0);
+          position: relative;
         }
-        .map_label_arrow::before {
-          border: 6px solid transparent;
-          border-top: 0;
-          top: 105px;
-          content: "";
-          position: absolute;
-          right: 50%;
-        }
+
         .map_label_arrow::after {
-          border: 6px solid transparent;
-          border-top: 8px solid #fff;
-          top: 104px;
+          border: 16px solid transparent;
+          border-top: 16px solid #fff;
           content: "";
           position: absolute;
-          right: 50%;
+          right: 45%;
         }
+
         .place_name {
           font-size: 17px;
           color: #cb9639;
