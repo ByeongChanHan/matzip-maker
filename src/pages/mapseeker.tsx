@@ -9,6 +9,30 @@ export default function mapseeker() {
   const markers: any[] = [];
   let currentOverlay: any = null;
 
+  const getRandomEmoji = () => {
+    const emojis = [
+      "😀",
+      "😁",
+      "😃",
+      "😄",
+      "😆",
+      "😉",
+      "😊",
+      "😋",
+      "😍",
+      "😘",
+      "🥰",
+      "😙",
+      "🙂",
+      "🤗",
+      "🤩",
+      "🤭",
+    ];
+
+    const randomIndex = Math.floor(Math.random() * emojis.length);
+    return emojis[randomIndex];
+  };
+
   useEffect(() => {
     if (!mapRef.current) return;
 
@@ -80,6 +104,8 @@ export default function mapseeker() {
           '<div class="map_label">' +
             '<div class="place_name">' +
             place.place_name +
+            " " +
+            getRandomEmoji() +
             "</div>" +
             "<hr>" +
             '<div class="category_name">' +
