@@ -1,2 +1,29 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&family=Roboto:wght@300&display=swap");
 $Header-font: "Noto Sans KR", sans-serif;
+// Colors
+$color-primary: #cb9639;
+$color-secondary: #d6b865;
+$color-text: #333333;
+$color-background: #f5f5f5;
+$color-error: #ff4136;
+
+// Typography
+$font-primary: "Noto Sans KR", sans-serif;
+$font-size-base: 16px;
+$line-height-base: 1.5;
+
+// Spacing
+$spacing-unit: 8px;
+
+// Border Radius
+$border-radius-base: 12px;
+
+// Shadows
+$shadow-sm: 0px 2px 4px rgba(0, 0, 0, 0.1);
+$shadow-md: 0px 4px 8px rgba(0, 0, 0, 0.1);
+
+// Breakpoints
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
