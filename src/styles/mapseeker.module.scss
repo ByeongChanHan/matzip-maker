@@ -1,7 +1,7 @@
 @import "./variable.scss";
 
 .reset {
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   font-family: $Header-font;
   position: absolute;
   left: 45%;
@@ -9,7 +9,7 @@
   z-index: 2;
   background-color: #cb9639;
   color: white;
-  padding: 1% 2%;
+  padding: 10px 20px;
   border-radius: 25px;
   border: 0;
 }
