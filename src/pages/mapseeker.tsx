@@ -1,23 +1,23 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react-hooks/rules-of-hooks */
+import SearchBar from "@/components/SearchBar";
 import Kakaomap, {
   getAddressByCoords,
-  placesSearchCB,
   removeMarkers,
+  searchNearbyPlaces,
 } from "@/util/Kakaomap";
 import { useEffect } from "react";
 import styles from "../styles/mapseeker.module.scss";
 
 export default function mapseeker() {
   //현위치에서 찾기
-  const onHandleClick = async () => {
+  const getCurrentLocationAndSearchRestaurants = async () => {
     removeMarkers();
     const lat = localStorage.getItem("latitude");
     const lon = localStorage.getItem("longitude");
     const locPosition = new window.kakao.maps.LatLng(lat, lon);
     const address = await getAddressByCoords(locPosition);
-    let places = new window.kakao.maps.services.Places();
-    places!.keywordSearch(address, placesSearchCB); // 현재 위치 맛집 검색
+    searchNearbyPlaces(address);
   };
 
   useEffect(() => {
@@ -33,16 +33,20 @@ export default function mapseeker() {
           <p className={styles.description}>
             지도를 이용하여 맛집을 찾아보세요!
           </p>
+          <SearchBar></SearchBar>
         </div>
       </section>
       <div id="map"></div>
-      <button className={styles.reset} onClick={onHandleClick}>
+      <button
+        className={styles.reset}
+        onClick={getCurrentLocationAndSearchRestaurants}
+      >
         현 위치에서 찾기
       </button>
       <style jsx global>{`
         #map {
           width: 100vw;
-          height: 70vh;
+          height: 63vh;
         }
         .map_label {
           position: relative;

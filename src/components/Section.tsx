@@ -37,7 +37,14 @@ export default function Section() {
           />
           <h3>{restaurant.name}</h3>
           <p>{restaurant.description}</p>
-          <div className={styles.rating}>{restaurant.rating}</div>
+          <div className={styles.rating}>
+            <div
+              className={styles.stars}
+              data-rating={Math.round(restaurant.rating)}
+              aria-label={`Rating of this restaurant is ${restaurant.rating} out of 5.`}
+            ></div>
+            <span>{restaurant.rating.toFixed(1)}</span>
+          </div>
         </div>
       ))}
     </section>

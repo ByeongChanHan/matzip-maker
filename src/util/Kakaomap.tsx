@@ -19,9 +19,6 @@ export default function Kakaomap() {
   const map = new kakao.maps.Map(container, options);
   globalmap = map;
 
-  // 장소 검색 객체를 생성합니다
-  let places = new kakao.maps.services.Places();
-
   //현재 위치 마커 이미지
   const imageSrc =
     "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
@@ -59,7 +56,7 @@ export default function Kakaomap() {
 
       displayMarker(locPosition);
       const address = await getAddressByCoords(locPosition);
-      places.keywordSearch(address, placesSearchCB); // 현재 위치 맛집 검색
+      searchNearbyPlaces(address);
     });
   }
 
@@ -99,7 +96,6 @@ export const getAddressByCoords = (coords: {
         status: any
       ) => {
         if (status === window.kakao.maps.services.Status.OK) {
-          console.log(result);
           const searchKeyword = result[0].address.address_name + " " + "맛집";
           resolve(searchKeyword);
         } else {
@@ -143,7 +139,10 @@ export const removeMarkers = () => {
 };
 
 // 맛집 검색 완료 시 호출되는 콜백함수
-export const placesSearchCB = (data: string | any[], status: string) => {
+const placesSearchCB = (data: string | any[], status: string) => {
+  if (currentOverlay) {
+    currentOverlay.setMap(null);
+  }
   if (status === window.kakao.maps.services.Status.OK) {
     // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
     // LatLngBounds 객체에 좌표를 추가합니다
@@ -217,4 +216,9 @@ const displayInformation = (place: {
       currentOverlay.setMap(null);
     }
   });
+};
+
+export const searchNearbyPlaces = (address: unknown) => {
+  let places = new window.kakao.maps.services.Places();
+  places.keywordSearch(address, placesSearchCB); // 현재 위치 맛집 검색
 };

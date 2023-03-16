@@ -15,10 +15,10 @@ export default function Header() {
             <Link href="/login">로그인</Link>
           </li>
           <li>
-            <Link href="/mapseeker">지도</Link>
+            <Link href="/mapseeker">지도 찾기</Link>
           </li>
           <li>
-            <Link href="/list">맛집 리스트</Link>
+            <Link href="/list">맛집 공유</Link>
           </li>
         </ul>
       </nav>

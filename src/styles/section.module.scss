@@ -3,6 +3,52 @@
   height: 50%;
   display: flex;
 }
+.stars {
+  display: inline-block;
+  font-size: 18px;
+  color: #e2cf34;
+}
+
+.stars::after {
+  color: #ccc;
+}
+
+.stars[data-rating="1"]::before {
+  content: "★";
+}
+
+.stars[data-rating="1"]::after {
+  content: "★★★★";
+}
+
+.stars[data-rating="2"]::before {
+  content: "★★";
+}
+
+.stars[data-rating="2"]::after {
+  content: "★★★";
+}
+
+.stars[data-rating="3"]::before {
+  content: "★★★";
+}
+
+.stars[data-rating="2"]::after {
+  content: "★★";
+}
+
+.stars[data-rating="4"]::before {
+  content: "★★★★";
+}
+
+.stars[data-rating="4"]::after {
+  content: "★";
+}
+
+.stars[data-rating="5"]::before {
+  content: "★★★★★";
+}
+
 .card {
   border: 1px solid #ccc;
   border-radius: 4px;
